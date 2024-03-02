@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package soundstage;
+
+service SoundStageService{
+    rpc CreateSoundStageUser(CreateSoundStageDto) returns (Empty) {};
+}
+
+message CreateSoundStageDto{
+    string userId = 1;
+}
+
+message UpdateSoundStageDto{
+    string userId = 1;
+}
+
+message Empty{}
