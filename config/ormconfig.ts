@@ -1,7 +1,9 @@
 import { config } from 'dotenv';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
-config();
+const ENV = process.env.NODE_ENV;
+
+config({ path: ENV ? `.env.${ENV}` : '.env' });
 
 const ormConfig: TypeOrmModuleOptions = {
   type: 'mssql',
@@ -11,7 +13,7 @@ const ormConfig: TypeOrmModuleOptions = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   options: {
-    encrypt: false, // MSSQL-specific option
+    encrypt: false,
   },
   synchronize: false,
   entities: [],
